@@ -11,15 +11,13 @@ This forked project provides MSI Windows Installer for Squid Proxy Server. It en
 * [Download updated forked Squid 6.10 for Windows MSI installer] in the releases page https://github.com/thewriteway/squid-windows/releases/tag/v6.10
 * Run it and click "Next" button till the product is installed
 
-Please have a look at the tutorial describing [*How to Install Squid on Windows*](https://docs.diladele.com/howtos/installing_squid_windows/index.html).
-
 **Native HTTP and HTTPS Filtering on Windows**
 -----------------------------
-In case you need a proxy and web filtering solution for Microsoft Windows with Admin UI, consider taking a look at [**Web Filtering Proxy**](https://webproxy.diladele.com/) project. 
+In case you need a proxy and web filtering solution for Microsoft Windows with Admin UI, consider taking a look at [**Web Filtering Proxy**](https://www.diladele.com/webproxy/) project. 
 
 Web Filtering Proxy is a Windows native web filtering solution that seamlessly integrates with Active Directory and provides rich content and web filtering functionality to sanitize Internet traffic passing into home/enterprise networks. It may be used to block illegal or potentially malicious file downloads, remove annoying advertisements, prevent access to various categories of web sites and block resources with adult/explicit content.
 
-The MSI can be downloaded from [download page](https://webproxy.diladele.com/) or installed using Chocolatey ```choco install webproxy``` or Winget ```winget install webproxy``` package managers. Administator guide and various tutorials are available [here](https://webproxy.diladele.com/docs/). 
+The MSI can be downloaded from [download page](https://www.diladele.com/webproxy/download.html) or installed Winget ```winget install webproxy``` package managers. Administator guide and various tutorials are available [here](https://www.diladele.com/webproxy/docs/). 
 
 **Help**
 --------
