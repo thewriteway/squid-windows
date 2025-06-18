@@ -1,48 +1,115 @@
 name: Sync with upstream
-
 on:
   schedule:
-    - cron: '0 2 * * *'  # Every night at 3 AM London time
+    - cron: '0 3 * * *'  # Every night at 3 AM UTC (4 AM London time in BST, 3 AM in GMT)
   workflow_dispatch:
 
 jobs:
   sync:
     runs-on: ubuntu-latest
     permissions:
-      contents: write  # Required to push to the repo
-
+      contents: write  # Needed to push to your repo
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch full history for proper syncing
 
       - name: Set up Git
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
+      - name: Install GitHub CLI
+        uses: cli/cli-action@v2
+
       - name: Get parent (upstream) repo full name
         id: get-upstream
         run: |
-          parent=$(gh repo view --json parent -q '.parent.nameWithOwner' 2>/dev/null || echo "")
+          repo="${{ github.repository }}"
+          parent=$(gh api repos/$repo --jq '.parent.full_name // empty' 2>/dev/null)
+          if [ -z "$parent" ]; then
+            echo "❌ No upstream repository found. This repository may not be a fork."
+            echo "💡 This workflow only works with forked repositories."
+            exit 1
+          fi
           echo "parent=$parent" >> "$GITHUB_OUTPUT"
+          echo "🔍 Found upstream repository: $parent"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+
       - name: Add upstream and fetch
-        if: steps.get-upstream.outputs.parent != ''
         run: |
           git remote add upstream https://github.com/${{ steps.get-upstream.outputs.parent }}.git
           git fetch upstream
 
-      - name: Fast-forward from upstream
-        if: steps.get-upstream.outputs.parent != ''
+      - name: Get default branch names
+        id: get-branches
         run: |
-          branch=$(git remote show upstream | awk '/HEAD branch/ {print $NF}')
-          git checkout $branch
-          git merge --ff-only upstream/$branch && echo "✅ Synced with upstream" || echo "⚠️ Conflict detected – skipped"
+          # Get upstream default branch
+          upstream_branch=$(git remote show upstream | grep 'HEAD branch' | cut -d' ' -f5)
+          # Get origin default branch
+          origin_branch=$(git remote show origin | grep 'HEAD branch' | cut -d' ' -f5)
+
+          echo "upstream_branch=$upstream_branch" >> "$GITHUB_OUTPUT"
+          echo "origin_branch=$origin_branch" >> "$GITHUB_OUTPUT"
+          echo "🔍 Upstream default branch: $upstream_branch"
+          echo "🔍 Origin default branch: $origin_branch"
+
+      - name: Sync with upstream
+        run: |
+          upstream_branch="${{ steps.get-branches.outputs.upstream_branch }}"
+          origin_branch="${{ steps.get-branches.outputs.origin_branch }}"
+
+          # Checkout the appropriate branch
+          if [ "$upstream_branch" = "$origin_branch" ]; then
+            git checkout "$origin_branch"
+          else
+            echo "⚠️ Branch mismatch: upstream uses '$upstream_branch', origin uses '$origin_branch'"
+            echo "Syncing upstream/$upstream_branch to origin/$origin_branch"
+            git checkout "$origin_branch"
+          fi
+
+          # Attempt fast-forward merge
+          echo "🔄 Attempting to sync with upstream/$upstream_branch..."
+          if git merge --ff-only upstream/$upstream_branch; then
+            echo "✅ Successfully synced with upstream"
+            echo "sync_success=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "⚠️ Cannot fast-forward merge. Manual intervention may be required."
+            echo "This usually means there are local commits that conflict with upstream changes."
+            echo "sync_success=false" >> "$GITHUB_OUTPUT"
+
+            # Show the divergence
+            echo "📊 Commit comparison:"
+            git log --oneline --graph --decorate --all -10
+
+            # Reset to avoid leaving repo in bad state
+            git merge --abort 2>/dev/null || true
+            exit 1
+          fi
+        id: sync
 
       - name: Push to origin
-        if: steps.get-upstream.outputs.parent != ''
+        if: steps.sync.outputs.sync_success == 'true'
         run: |
-          branch=$(git remote show upstream | awk '/HEAD branch/ {print $NF}')
-          git push origin $branch
+          origin_branch="${{ steps.get-branches.outputs.origin_branch }}"
+          echo "📤 Pushing changes to origin/$origin_branch..."
+          git push origin "$origin_branch"
+          echo "✅ Successfully pushed changes to origin"
+
+      - name: Create summary
+        if: always()
+        run: |
+          if [ "${{ steps.sync.outputs.sync_success }}" = "true" ]; then
+            echo "## ✅ Sync Successful" >> $GITHUB_STEP_SUMMARY
+            echo "Repository has been successfully synced with upstream." >> $GITHUB_STEP_SUMMARY
+          else
+            echo "## ⚠️ Sync Failed" >> $GITHUB_STEP_SUMMARY
+            echo "Could not sync with upstream. Manual intervention may be required." >> $GITHUB_STEP_SUMMARY
+            echo "This typically happens when there are conflicting local commits." >> $GITHUB_STEP_SUMMARY
+          fi
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Upstream:** ${{ steps.get-upstream.outputs.parent }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Timestamp:** $(date -u)" >> $GITHUB_STEP_SUMMARY
