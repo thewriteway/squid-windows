@@ -1,7 +1,7 @@
 name: Sync with upstream
 on:
   schedule:
-    - cron: '0 3 * * *'  # Every night at 3 AM UTC (4 AM London time in BST, 3 AM in GMT)
+    - cron: '0 3 * * 0'  #
   workflow_dispatch:
 
 jobs:
