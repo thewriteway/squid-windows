@@ -20,8 +20,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-      - name: Install GitHub CLI
-        uses: cli/cli-action@v2
+
 
       - name: Get parent (upstream) repo full name
         id: get-upstream
