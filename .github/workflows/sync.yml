@@ -1,0 +1,36 @@
+name: Sync with upstream
+
+on:
+  schedule:
+    - cron: '0 2 * * *'  # 3 AM London time
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write  # required to push to your fork
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Add upstream remote and fetch
+        run: |
+          git remote add upstream https://github.com/${{ github.event.repository.parent.full_name }}.git
+          git fetch upstream
+
+      - name: Fast-forward from upstream
+        run: |
+          branch=$(git remote show upstream | awk '/HEAD branch/ {print $NF}')
+          git checkout $branch
+          git merge --ff-only upstream/$branch && echo "Up to date ✅" || echo "Conflict – manual merge needed ❌"
+
+      - name: Push to fork
+        run: |
+          branch=$(git remote show upstream | awk '/HEAD branch/ {print $NF}')
+          git push origin $branch
