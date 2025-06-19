@@ -11,11 +11,11 @@
    "packageRules": [
     {
       "datasources": ["cpan"],
-      "packagePatterns": ["*"],
+      "packagePatterns": ["*"]
     },
     {
       "datasources": ["nuget"],
-      "packagePatterns": ["*"],
+      "packagePatterns": ["*"]
     }
   ],
   "repositories": ["thewriteway/squid-windows"]
