@@ -8,5 +8,15 @@
   "separateMajorMinor": true,
   "separateMultipleMajor": true,
   "separateMultipleMinor": true,
+   "packageRules": [
+    {
+      "datasources": ["cpan"],
+      "packagePatterns": ["*"],
+    },
+    {
+      "datasources": ["nuget"],
+      "packagePatterns": ["*"],
+    }
+  ],
   "repositories": ["thewriteway/squid-windows"]
 }
