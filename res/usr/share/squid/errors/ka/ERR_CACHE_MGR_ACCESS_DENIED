@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html><head>
-<meta type="copyright" content="Copyright (C) 1996-2021 The Squid Software Foundation and contributors">
+<meta type="copyright" content="Copyright (C) 1996-2023 The Squid Software Foundation and contributors">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>შეცდომა: კეშის სამართავ ინტერფეისზე წვდომა აკრძალულია</title>
 <style type="text/css"><!-- 
@@ -13,7 +13,7 @@ body
 </head><body id="%c">
 <div id="titles">
 <h1>შეცდომა</h1>
-<h2>Cache Manager Access Denied.</h2>
+<h2>კეშის მმართველთან წვდომა აკრძალულია.</h2>
 </div>
 <hr>
 
@@ -21,12 +21,12 @@ body
 <p>The following error was encountered while trying to retrieve the URL: <a href="%U">%U</a></p>
 
 <blockquote id="error">
-<p><b>Cache Manager Access Denied.</b></p>
+<p><b>კეშის მმართველთან წვდომა აკრძალულია.</b></p>
 </blockquote>
 
 <p>Sorry, you are not currently allowed to request %U from this cache manager until you have authenticated yourself.</p>
 
-<p>Please contact the <a href="mailto:%w%W">cache administrator</a> if you have difficulties authenticating yourself or, if you <em>are</em> the administrator, read Squid documentation on cache manager interface and check cache log for more detailed error messages.</p>
+<p>ავთენტიკაციასთან დაკავშირებული პრობლემების შემთხვევაში დაუკავშირდით a href="mailto:%w%W">კეშის ადმინისტრატორს</a>, ან, თუ თქვენ <em>ბრძანდებით</em> ადმინისტრატორი, წაიკითხეთ Squid-ის კონფიგურაცია კეშის მმართველის ინტერფეისის შესახებ. მეტი დეტალებისთვის იხილეთ შეცდომების ჟურნალი.</p>
 
 <br>
 </div>

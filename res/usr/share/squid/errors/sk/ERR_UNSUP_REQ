@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html><head>
-<meta type="copyright" content="Copyright (C) 1996-2021 The Squid Software Foundation and contributors">
+<meta type="copyright" content="Copyright (C) 1996-2023 The Squid Software Foundation and contributors">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>CHYBA: Požadovaný URL nebolo možné získať</title>
 <style type="text/css"><!-- 
@@ -24,7 +24,7 @@ body
 <p><b>Nepodporovaná metóda a protokol požiadavky</b></p>
 </blockquote>
 
-<p>Squid nepodporuje všetky typy metód pri všetkých protokoloch. Napríklad: nie je možné použiť metódu POST pri službe Gopher.</p>
+<p>Squid does not support all request methods for all access protocols.</p>
 
 <p>Vaším správcom cache je <a href="mailto:%w%W">%w</a>.</p>
 <br>

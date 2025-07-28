@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html><head>
-<meta type="copyright" content="Copyright (C) 1996-2021 The Squid Software Foundation and contributors">
+<meta type="copyright" content="Copyright (C) 1996-2023 The Squid Software Foundation and contributors">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Web Browser Configuration</title>
+<title>ბრაუზერის კონფიგურაცია</title>
 <style type="text/css"><!--
  %l
 
@@ -13,7 +13,7 @@ body
 </head><body id="%c">
 <div id="titles">
 <h1>შეცდომა</h1>
-<h2>Web Browser Configuration</h2>
+<h2>ბრაუზერის კონფიგურაცია</h2>
 </div>
 <hr>
 
@@ -22,29 +22,29 @@ body
 <p>Your Web Browser configuration needs to be corrected to use this network.</p>
 </blockquote>
 
-<p>How to find these settings in your browser:</p>
+<p>როგორ ვიპოვოთ ეს პარამეტრები ბრაუზერში:</p>
 
 <div id="firefox">
 For Firefox browsers go to:
 <ul>
-<li>Tools -&gt; Options -&gt; Advanced -&gt; Network -&gt; Connection Settings</li>
-<li>Select Auto-detect proxy settings for this network</li>
+<li>ხელსაწყოები -&gt; მორგება -&gt; დამატებით -&gt; ქსელი -&gt; მიერთების პარამეტრები</li>
+<li>აირჩიეთ ამ ქსელისთვის პროქსის პარამეტრების ავტომატური ამოცნობა</li>
 </ul>
 </div>
 
 <div id="microsoft">
 For Internet Explorer browsers go to:
 <ul>
-<li>Tools -&gt; Internet Options -&gt; Connection -&gt; LAN Settings -&gt;Proxy</li>
-<li>Select Automatically detect settings</li>
+<li>ხელსაწყოები -&gt; ინტერნეტის პარამეტრები -&gt; დაკავშირება -&gt; ქსელის პარამეტრები -&gt;პროქსი</li>
+<li>არჩიეთ პარამეტრების ავტომატური დაყენება</li>
 </ul>
 </div>
 
 <div id="opera">
 For Opera browsers go to:
 <ul>
-<li>Tools -&gt; Preferences -&gt; Advanced -&gt; Network -&gt; Proxy Servers</li>
-<li>Select Use Automatic proxy configuration</li>
+<li>ხელსაწყოები -&gt; მორგება -&gt; დამატებით -&gt; ქსელი -&gt; პროქსი სერვერები</li>
+<li>აირჩიეთ ავტომატური პროქსის კონფიგურაციის გამოყენება</li>
 </ul>
 </div>
 

@@ -100,7 +100,7 @@ parameter.
 .PP
 For example:
 .if !'po4a'hide' .RS
-.if !'po4a'hide' .B /usr/lib/squid/security_file_certgen.exe \-c \-s /var/cache/squid/ssl_db \-M 4MB
+.if !'po4a'hide' .B /opt/squid/libexec/security_file_certgen.exe \-c \-s /opt/squid/var/cache/squid/ssl_db \-M 4MB
 .if !'po4a'hide' .RE
 .
 .PP
@@ -114,7 +114,7 @@ Only HTTP listening port options are required to enable generation and set the s
 .PP
 For example:
 .if !'po4a'hide' .RS
-.if !'po4a'hide' .B http_port 3128 ssl-bump generate-host-certificates=on dynamic_cert_mem_cache_size=4MB cert=/etc/squid/ssl_cert/example.com.pem
+.if !'po4a'hide' .B http_port 3128 ssl-bump generate-host-certificates=on dynamic_cert_mem_cache_size=4MB cert=/opt/squid/etc/ssl_cert/example.com.pem
 .if !'po4a'hide' .RE
 .
 .PP
@@ -128,7 +128,7 @@ configuration directive.
 .PP
 For example:
 .if !'po4a'hide' .RS
-.if !'po4a'hide' .B sslcrtd_program /usr/lib/squid/security_file_certgen.exe \-s /var/cache/squid/ssl_db \-M 4MB
+.if !'po4a'hide' .B sslcrtd_program /opt/squid/libexec/security_file_certgen.exe \-s /opt/squid/var/cache/squid/ssl_db \-M 4MB
 .if !'po4a'hide' .br
 .if !'po4a'hide' .B sslcrtd_children 5
 .if !'po4a'hide' .RE
@@ -143,7 +143,7 @@ parameters.
 .PP
 For example:
 .if !'po4a'hide' .RS
-.if !'po4a'hide' .B sslcrtd_program /usr/lib/squid/security_file_certgen.exe
+.if !'po4a'hide' .B sslcrtd_program /opt/squid/libexec/security_file_certgen.exe
 .if !'po4a'hide' .RE
 .
 .SH AUTHOR
@@ -157,7 +157,7 @@ and
 .
 .SH COPYRIGHT
 .PP
- * Copyright (C) 1996-2024 The Squid Software Foundation and contributors
+ * Copyright (C) 1996-2025 The Squid Software Foundation and contributors
  *
  * Squid software is distributed under GPLv2+ license and includes
  * contributions from numerous individuals and organizations.

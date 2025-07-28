@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html><head>
-<meta type="copyright" content="Copyright (C) 1996-2021 The Squid Software Foundation and contributors">
+<meta type="copyright" content="Copyright (C) 1996-2023 The Squid Software Foundation and contributors">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>შეცდომა: მოთხოვნილი რესურსის გამოძახება ვერ მოხერხდა</title>
 <style type="text/css"><!-- 
@@ -13,12 +13,12 @@ body
 </head><body id="%c">
 <div id="titles">
 <h1>შეცდომა</h1>
-<h2>მოთხოვნილი რესურსის გამოძახება ვერ მოხერხდა</h2>
+<h2>მოთხოვნილი ბმულის გამოთხოვა ვერ მოხერხდა</h2>
 </div>
 <hr>
 
 <div id="content">
-<p><b>Invalid Response</b> error was encountered while trying to process the request:</p>
+<p><b>არასწორი პასუხი</b> შეცდომა მოთხოვნის დამუშავებისას:</p>
 
 <blockquote id="data">
 <pre>%R</pre>

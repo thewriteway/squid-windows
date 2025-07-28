@@ -1,0 +1,50 @@
+## Copyright (C) 1996-2023 The Squid Software Foundation and contributors
+##
+## Squid software is distributed under GPLv2+ license and includes
+## contributions from numerous individuals and organizations.
+## Please see the COPYING and CONTRIBUTORS files for details.
+##
+
+ar	ar-ae ar-bh ar-dz ar-eg ar-iq ar-jo ar-kw ar-lb ar-ly ar-ma ar-om ar-qa ar-sa ar-sy ar-tn ar-ye
+az	az-az
+bg	bg-bg
+ca	ca-es
+cs	cs-cz
+da	da-dk
+de	de-at de-ch de-de de-li de-lu
+el	el-gr
+en	en-au en-bz en-ca en-cn en-gb en-ie en-in en-jm en-nz en-ph en-sg en-tt en-uk en-us en-za en-zw
+es	es-ar es-bo es-cl es-cu es-co es-do es-ec es-es es-pe es-pr es-py es-us es-uy es-ve es-xl spq
+es-mx	es-bz es-cr es-gt es-hn es-ni es-pa es-sv
+et	et-ee
+fa	fa-fa fa-ir
+fi	fi-fi
+fr	fr-be fr-ca fr-ch fr-fr fr-lu fr-mc
+he	he-il
+hu	hu-hu
+hy	hy-armn hy-am
+id	id-id
+it	it-ch it-it
+ja	ja-jp
+ka	ka-ge
+ko	ko-kp ko-kr
+lt	lt-lt
+lv	lv-lv
+ms	ms-my
+nl	nl-nl
+pl	pl-pl
+pt	pt-pt
+pt-br	pt-bz pt-xl
+ro	ro-ro ro-md
+ru	ru-ru
+sk	sk-sk
+sl	sl-si
+sr-cyrl	sr-rs sr-cyrl-cs sr-cyrl-rs sr-cyrl-me
+sr-latn	sr sr-sp sr-latn-cs sr-latn-rs sr-latn-me
+sv	sv-fi sv-se
+th	th-th
+tr	tr-tr
+uk	uk-ua
+vi	vi-vn
+zh-hant	zh-hant-tw zh-hant-hk zh-hant-mo zh-tw zh-hk zh-mo
+zh-hans	zh-hans-cn zh-cn zh-hans-sg zh-sg

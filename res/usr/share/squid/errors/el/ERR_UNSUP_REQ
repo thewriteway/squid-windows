@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html><head>
-<meta type="copyright" content="Copyright (C) 1996-2021 The Squid Software Foundation and contributors">
+<meta type="copyright" content="Copyright (C) 1996-2023 The Squid Software Foundation and contributors">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>ΣΦΑΛΜΑ: Αδύνατη η πρόσβαση στην αιτούμενη διεύθυνση</title>
 <style type="text/css"><!-- 
@@ -24,7 +24,7 @@ body
 <p><b>Μη υποστηριζόμενη μέθοδος αίτησης και πρωτόκολλο</b></p>
 </blockquote>
 
-<p>Το Squid δεν υποστηρίζει όλες τις μεθόδους αιτήσεων για όλα τα πρωτόκολλα πρόσβασης. Για παράδειγμα, το POST για Gopher δεν υποστηρίζεται.</p>
+<p>Squid does not support all request methods for all access protocols.</p>
 
 <p>Ο διαχειριστής του μεσολαβητή σας είναι ο <a href="mailto:%w%W">%w</a>.</p>
 <br>
