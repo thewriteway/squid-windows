@@ -50,7 +50,7 @@ Squid is derived from the ARPA\-funded Harvest Project.
 .PP
 This manual page only lists the command line arguments.
 For details on how to configure Squid see the file 
-.BI /opt/squid/etc/squid.conf.documented,
+.BI /etc/squid/squid.conf.documented,
 the Squid wiki FAQ and examples at https://wiki.squid-cache.org/ ,
 or the configuration manual on the Squid home page
 .if !'po4a'hide' http://www.squid-cache.org/Doc/config/
@@ -74,7 +74,7 @@ Write debugging to stderr also.
 .if !'po4a'hide' .TP
 .if !'po4a'hide' .B "\-f file"
 Use the given config-file instead of
-.B /opt/squid/etc/squid.conf .
+.B /etc/squid/squid.conf .
 If the file name starts with a 
 .B !
 or
@@ -148,7 +148,7 @@ on port.
 .if !'po4a'hide' .TP
 .if !'po4a'hide' .B \-s
 Enable logging to syslog. Also configurable in
-.BI /opt/squid/etc/squid.conf
+.BI /etc/squid/squid.conf
 .
 .if !'po4a'hide' .TP
 .if !'po4a'hide' .B \-S
@@ -199,7 +199,7 @@ option to prevent premature exits. To disable daemon mode, use
 option.
 .
 .SH FILES
-Squid configuration files located in /opt/squid/etc/:
+Squid configuration files located in /etc/squid/:
 .
 .if !'po4a'hide' .IP "squid.conf"
 The main configuration file. You must initially make changes to this file for 
@@ -233,10 +233,10 @@ language Squid provides error pages for.
 .br
 Some files also located elsewhere:
 .
-.if !'po4a'hide' .IP "/opt/squid/etc/mime.conf (mime_table)"
+.if !'po4a'hide' .IP "/etc/squid/mime.conf (mime_table)"
 MIME type mappings for FTP gatewaying
 .
-.if !'po4a'hide' .IP "/opt/squid/share/errors"
+.if !'po4a'hide' .IP "/usr/share/squid/errors"
 Location of Squid error pages and templates.
 .
 .SH AUTHOR

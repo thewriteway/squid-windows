@@ -1344,7 +1344,7 @@
 #	  # the current Squid-to-server connection (attempt). This ACL is not yet
 #	  # supported for use with other directives.
 #	  #
-#	  # For valid error names see in /opt/squid/share/errors/templates/error-details.txt
+#	  # For valid error names see in /usr/share/squid/errors/templates/error-details.txt
 #	  # template file.
 #	  #
 #	  # The following can be used as shortcuts for certificate properties:
@@ -3032,15 +3032,15 @@ http_port 3128
 #	Specify the location and options of the executable for certificate
 #	generator.
 #
-#	/opt/squid/libexec/security_file_certgen.exe program can use a disk cache to improve response
+#	/usr/lib/squid/security_file_certgen.exe program can use a disk cache to improve response
 #	times on repeated requests. To enable caching, specify -s and -M
 #	parameters. If those parameters are not given, the program generates
 #	a new certificate on every request.
 #
 #	For more information use:
-#		/opt/squid/libexec/security_file_certgen.exe -h
+#		/usr/lib/squid/security_file_certgen.exe -h
 #Default:
-# sslcrtd_program /opt/squid/libexec/security_file_certgen.exe -s /opt/squid/var/cache/squid/ssl_db -M 4MB
+# sslcrtd_program /usr/lib/squid/security_file_certgen.exe -s /var/cache/squid/ssl_db -M 4MB
 
 #  TAG: sslcrtd_children
 #	Specifies the maximum number of certificate generation processes that
@@ -4004,7 +4004,7 @@ http_port 3128
 #
 
 # Uncomment and adjust the following to add a disk cache directory.
-#cache_dir ufs /opt/squid/var/cache/squid 100 16 256
+#cache_dir ufs /var/cache/squid 100 16 256
 
 #  TAG: store_dir_select_algorithm
 #	How Squid selects which cache_dir to use when the response
@@ -4820,9 +4820,9 @@ http_port 3128
 #		Place Format:   //host:port
 #
 #	Default:
-#		access_log daemon:/opt/squid/var/logs/access.log squid
+#		access_log daemon:/var/log/squid/access.log squid
 #Default:
-# access_log daemon:/opt/squid/var/logs/access.log squid
+# access_log daemon:/var/log/squid/access.log squid
 
 #  TAG: icap_log
 #	ICAP log files record ICAP transaction summaries, one line per
@@ -4943,7 +4943,7 @@ http_port 3128
 #
 #	No responses is expected.
 #Default:
-# logfile_daemon /opt/squid/libexec/log_file_daemon.exe
+# logfile_daemon /usr/lib/squid/log_file_daemon.exe
 
 #  TAG: stats_collection	allow|deny acl acl...
 #	This options allows you to control which requests gets accounted
@@ -4965,8 +4965,8 @@ http_port 3128
 #	of modules supported.
 #
 #	Example:
-#		cache_store_log stdio:/opt/squid/var/logs/store.log
-#		cache_store_log daemon:/opt/squid/var/logs/store.log
+#		cache_store_log stdio:/var/log/squid/store.log
+#		cache_store_log daemon:/var/log/squid/store.log
 #Default:
 # none
 
@@ -5032,7 +5032,7 @@ http_port 3128
 #	You shouldn't need to change this, but the default file contains
 #	examples and formatting information if you do.
 #Default:
-# mime_table /opt/squid/etc/mime.conf
+# mime_table /etc/squid/mime.conf
 
 #  TAG: log_mime_hdrs	on|off
 #	The Cache can record both the request and the response MIME
@@ -5046,7 +5046,7 @@ http_port 3128
 #  TAG: pid_filename
 #	A filename to write the process-id to.  To disable, enter "none".
 #Default:
-# pid_filename /opt/squid/var/run/${service_name}.pid
+# pid_filename /var/run/squid.pid
 
 #  TAG: client_netmask
 #	A netmask for client addresses in logfiles and cachemgr output.
@@ -5090,7 +5090,7 @@ http_port 3128
 #
 #	To disable, enter "none".
 #Default:
-# netdb_filename stdio:/opt/squid/var/cache/squid/netdb.state
+# netdb_filename stdio:/var/cache/squid/netdb.state
 
 #  TAG: tls_key_log
 #	Configures whether and where Squid records pre-master secret and
@@ -5155,7 +5155,7 @@ http_port 3128
 #	increase the amount of data logged to this file and how often it is
 #	rotated with "debug_options"
 #Default:
-# cache_log /opt/squid/var/logs/cache.log
+# cache_log /var/log/squid/cache.log
 
 #  TAG: cache_log_message
 #	Configures logging of individual cache.log messages.
@@ -5231,7 +5231,7 @@ http_port 3128
 #
 
 # Leave coredumps in the first cache dir
-coredump_dir /opt/squid/var/cache/squid
+coredump_dir /var/cache/squid
 
 # OPTIONS FOR FTP GATEWAYING
 # -----------------------------------------------------------------------------
@@ -5351,12 +5351,12 @@ coredump_dir /opt/squid/var/cache/squid
 #	Note this is only useful if you have compiled in
 #	diskd as one of the store io modules.
 #Default:
-# diskd_program /opt/squid/libexec/diskd.exe
+# diskd_program /usr/lib/squid/diskd.exe
 
 #  TAG: unlinkd_program
 #	Specify the location of the executable for file deletion process.
 #Default:
-# unlinkd_program /opt/squid/libexec/unlinkd.exe
+# unlinkd_program /usr/lib/squid/unlinkd.exe
 
 #  TAG: pinger_program
 # Note: This option is only available if Squid is rebuilt with the
@@ -5364,7 +5364,7 @@ coredump_dir /opt/squid/var/cache/squid
 #
 #	Specify the location of the executable for the pinger process.
 #Default:
-# pinger_program /opt/squid/libexec/pinger.exe
+# pinger_program /usr/lib/squid/pinger.exe
 
 #  TAG: pinger_enable
 # Note: This option is only available if Squid is rebuilt with the
@@ -7650,9 +7650,9 @@ refresh_pattern .		0	20%	4320
 
 #  TAG: icon_directory
 #	Where the icons are stored. These are normally kept in
-#	/opt/squid/share/icons
+#	/usr/share/squid/icons
 #Default:
-# icon_directory /opt/squid/share/icons
+# icon_directory /usr/share/squid/icons
 
 #  TAG: global_internal_static
 #	This directive controls is Squid should intercept all requests for
@@ -7727,7 +7727,7 @@ refresh_pattern .		0	20%	4320
 #
 #	For information on CSS see http://www.w3.org/Style/CSS/
 #Default:
-# err_page_stylesheet /opt/squid/etc/errorpage.css
+# err_page_stylesheet /etc/squid/errorpage.css
 
 #  TAG: err_html_text
 #	HTML text to include in error messages.  Make this a "mailto"
@@ -8469,7 +8469,7 @@ refresh_pattern .		0	20%	4320
 #	Instructs Squid to load the specified dynamic module(s) or activate
 #	preloaded module(s).
 #Example:
-#loadable_modules /opt/squid/lib/MinimalAdapter.so
+#loadable_modules /usr/local/squid/lib/MinimalAdapter.so
 #Default:
 # none
 

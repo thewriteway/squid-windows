@@ -1,9 +1,9 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "squidsrv", "squidsrv\squidsrv.csproj", "{1F602BD4-0762-466A-95CC-AE5882907ABE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "squidsrv", "squidsrv\squidsrv.csproj", "{1F602BD4-0762-466A-95CC-AE5882907ABE}"
 EndProject
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "installer", "installer\installer.wixproj", "{BAF3352B-A4CF-4BC8-874B-A877962E771C}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -11,7 +11,7 @@ Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "installer", "installer\inst
 		{1F602BD4-0762-466A-95CC-AE5882907ABE} = {1F602BD4-0762-466A-95CC-AE5882907ABE}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "squidtray", "squidtray\squidtray.csproj", "{DDA0E589-4564-4B01-B710-69028D9AC463}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "squidtray", "squidtray\squidtray.csproj", "{DDA0E589-4564-4B01-B710-69028D9AC463}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

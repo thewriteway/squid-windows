@@ -24,7 +24,10 @@
             <Component Id="cygcrypto_1.1.dll" Directory="bin" Guid="47FED514-1F45-4B60-A877-7CEEB9F0DB8E">
                 <File Id="cygcrypto_1.1.dll" KeyPath="yes" Source="$(var.ResDir)\bin\cygcrypto-1.1.dll" />
             </Component>
-            <Component Id="cygdb_5.3.dll" Directory="bin" Guid="2F8EB661-B0F8-4CA4-8C7A-088A2EA47094">
+			<Component Id="cygcrypto_3.dll" Directory="bin" Guid="47FED514-1F45-4B60-A877-7CEEB960DB8E">
+				<File Id="cygcrypto_3.dll" KeyPath="yes" Source="$(var.ResDir)\bin\cygcrypto-3.dll" />
+			</Component>
+			<Component Id="cygdb_5.3.dll" Directory="bin" Guid="2F8EB661-B0F8-4CA4-8C7A-088A2EA47094">
                 <File Id="cygdb_5.3.dll" KeyPath="yes" Source="$(var.ResDir)\bin\cygdb-5.3.dll" />
             </Component>
             <Component Id="cygexpat_1.dll" Directory="bin" Guid="DC891438-DCE1-4879-82C6-4CCEF04CE6E0">
@@ -69,7 +72,10 @@
             <Component Id="cygssl_1.1.dll" Directory="bin" Guid="C104C42E-9766-44CF-A0F0-AD69033D6E88">
                 <File Id="cygssl_1.1.dll" KeyPath="yes" Source="$(var.ResDir)\bin\cygssl-1.1.dll" />
             </Component>
-            <Component Id="cygstdc___6.dll" Directory="bin" Guid="A6D4D204-79CC-4D3D-A0E2-F8C8B983F119">
+			<Component Id="cygssl_3.dll" Directory="bin" Guid="C104C42E-9766-44CF-A0FD-AD69033D6E88">
+				<File Id="cygssl_3.dll" KeyPath="yes" Source="$(var.ResDir)\bin\cygssl-3.dll" />
+			</Component>
+			<Component Id="cygstdc___6.dll" Directory="bin" Guid="A6D4D204-79CC-4D3D-A0E2-F8C8B983F119">
                 <File Id="cygstdc___6.dll" KeyPath="yes" Source="$(var.ResDir)\bin\cygstdc++-6.dll" />
             </Component>
             <Component Id="cygwin1.dll" Directory="bin" Guid="E8739944-8786-4CD3-BE30-3F2C2D3AC353">
@@ -87,17 +93,11 @@
             <Component Id="LICENSE" Directory="bin" Guid="6A4E62DC-F643-45F5-AC3F-2E07E1BE9C7F">
                 <File Id="LICENSE" KeyPath="yes" Source="$(var.ResDir)\bin\LICENSE" />
             </Component>
-            <Component Id="purge.exe" Directory="bin" Guid="39D9868B-549A-4B01-91FC-2BBFF9FE5D50">
-                <File Id="purge.exe" KeyPath="yes" Source="$(var.ResDir)\bin\purge.exe" />
-            </Component>
             <Component Id="settings.json" Directory="bin" Guid="212D7DCE-941A-411D-B9C9-0343A4A9F275">
                 <File Id="settings.json" KeyPath="yes" Source="$(var.ResDir)\bin\settings.json" />
             </Component>
             <Component Id="squid.exe" Directory="bin" Guid="5F742000-EEF1-4A6E-BB50-DFC4F2957116">
                 <File Id="squid.exe" KeyPath="yes" Source="$(var.ResDir)\bin\squid.exe" />
-            </Component>
-            <Component Id="squidclient.exe" Directory="bin" Guid="F8E937FA-BDC6-44EB-B08C-E47D3FF5104E">
-                <File Id="squidclient.exe" KeyPath="yes" Source="$(var.ResDir)\bin\squidclient.exe" />
             </Component>
             <Component Id="_10544B8C_91B7_4C5A_9F25_A53D427ECA45" Directory="dev" Guid="22CECBED-6483-43E7-B20A-DA199AC78463" KeyPath="yes">
                 <CreateFolder />
@@ -144,41 +144,11 @@
             <Component Id="ca_bundle.trust.crt" Directory="certs" Guid="09C426B8-6E28-4B52-995E-B700A8061458">
                 <File Id="ca_bundle.trust.crt" KeyPath="yes" Source="$(var.ResDir)\etc\ssl\certs\ca-bundle.trust.crt" />
             </Component>
-            <Component Id="basic_db_auth" Directory="squid_1" Guid="68B4BF44-826F-42FE-A21E-7980817E7C71">
-                <File Id="basic_db_auth" KeyPath="yes" Source="$(var.ResDir)\lib\squid\basic_db_auth" />
-            </Component>
-            <Component Id="basic_fake_auth.exe" Directory="squid_1" Guid="707F95CE-D9D3-4429-B42D-B0D134283F35">
-                <File Id="basic_fake_auth.exe" KeyPath="yes" Source="$(var.ResDir)\lib\squid\basic_fake_auth.exe" />
-            </Component>
-            <Component Id="basic_getpwnam_auth.exe" Directory="squid_1" Guid="7D45A51C-AB9E-4EA1-A16E-C29EE15DBB83">
-                <File Id="basic_getpwnam_auth.exe" KeyPath="yes" Source="$(var.ResDir)\lib\squid\basic_getpwnam_auth.exe" />
-            </Component>
             <Component Id="basic_ldap_auth.exe" Directory="squid_1" Guid="BA80DD25-6D7F-4D58-BF6F-F26874BCB69A">
                 <File Id="basic_ldap_auth.exe" KeyPath="yes" Source="$(var.ResDir)\lib\squid\basic_ldap_auth.exe" />
             </Component>
             <Component Id="basic_ncsa_auth.exe" Directory="squid_1" Guid="B17E365E-49E6-4B68-850B-C9112327C860">
                 <File Id="basic_ncsa_auth.exe" KeyPath="yes" Source="$(var.ResDir)\lib\squid\basic_ncsa_auth.exe" />
-            </Component>
-            <Component Id="basic_pop3_auth" Directory="squid_1" Guid="5479AD38-9A90-4A91-9478-F33AA9BDAD98">
-                <File Id="basic_pop3_auth" KeyPath="yes" Source="$(var.ResDir)\lib\squid\basic_pop3_auth" />
-            </Component>
-            <Component Id="basic_radius_auth.exe" Directory="squid_1" Guid="C244E194-07C5-4367-BE49-714852A298EA">
-                <File Id="basic_radius_auth.exe" KeyPath="yes" Source="$(var.ResDir)\lib\squid\basic_radius_auth.exe" />
-            </Component>
-            <Component Id="basic_sasl_auth.exe" Directory="squid_1" Guid="FDC0A135-5C1F-4150-950F-C33F89B24FED">
-                <File Id="basic_sasl_auth.exe" KeyPath="yes" Source="$(var.ResDir)\lib\squid\basic_sasl_auth.exe" />
-            </Component>
-            <Component Id="basic_smb_auth.exe" Directory="squid_1" Guid="23496D58-339D-4289-9999-8255EECABDB6">
-                <File Id="basic_smb_auth.exe" KeyPath="yes" Source="$(var.ResDir)\lib\squid\basic_smb_auth.exe" />
-            </Component>
-            <Component Id="basic_smb_auth.sh" Directory="squid_1" Guid="A95C9840-3714-4F8F-A0FB-F0125D55608C">
-                <File Id="basic_smb_auth.sh" KeyPath="yes" Source="$(var.ResDir)\lib\squid\basic_smb_auth.sh" />
-            </Component>
-            <Component Id="cachemgr.exe" Directory="squid_1" Guid="BB0399DA-8CE3-4446-A217-D01ACA6E1A7E">
-                <File Id="cachemgr.exe" KeyPath="yes" Source="$(var.ResDir)\lib\squid\cachemgr.exe" />
-            </Component>
-            <Component Id="cert_tool" Directory="squid_1" Guid="70845E26-C7CD-4DD3-AE77-88124FB96F16">
-                <File Id="cert_tool" KeyPath="yes" Source="$(var.ResDir)\lib\squid\cert_tool" />
             </Component>
             <Component Id="cygcom_err_2.dll_1" Directory="squid_1" Guid="CDC9589E-7ADD-4951-9A54-4CD50F6A8FA3">
                 <File Id="cygcom_err_2.dll_1" KeyPath="yes" Source="$(var.ResDir)\lib\squid\cygcom_err-2.dll" />
@@ -186,6 +156,9 @@
             <Component Id="cygcrypto_1.1.dll_1" Directory="squid_1" Guid="DF050838-E2FB-45C5-97C5-4332F836BBBC">
                 <File Id="cygcrypto_1.1.dll_1" KeyPath="yes" Source="$(var.ResDir)\lib\squid\cygcrypto-1.1.dll" />
             </Component>
+			<Component Id="cygcrypto_3.dll_1" Directory="squid_1" Guid="DF050838-E2FB-45C5-97C5-4332F736BBBC">
+				<File Id="cygcrypto_3.dll_1" KeyPath="yes" Source="$(var.ResDir)\lib\squid\cygcrypto-3.dll" />
+			</Component>			
             <Component Id="cygdb_5.3.dll_1" Directory="squid_1" Guid="CDC877CC-B99D-43B6-AFBC-E3BAD716DD79">
                 <File Id="cygdb_5.3.dll_1" KeyPath="yes" Source="$(var.ResDir)\lib\squid\cygdb-5.3.dll" />
             </Component>
@@ -231,7 +204,10 @@
             <Component Id="cygssl_1.1.dll_1" Directory="squid_1" Guid="DFD3FE61-8B9F-4AB4-B21D-363A49F65C36">
                 <File Id="cygssl_1.1.dll_1" KeyPath="yes" Source="$(var.ResDir)\lib\squid\cygssl-1.1.dll" />
             </Component>
-            <Component Id="cygstdc___6.dll_1" Directory="squid_1" Guid="04843E08-8CFA-4EBE-B335-F378177E860F">
+			<Component Id="cygssl_3.dll_1" Directory="squid_1" Guid="DFD3FE61-8B9F-4CB4-B21D-363A49F65C36">
+				<File Id="cygssl_3.dll_1" KeyPath="yes" Source="$(var.ResDir)\lib\squid\cygssl-3.dll" />
+			</Component>
+			<Component Id="cygstdc___6.dll_1" Directory="squid_1" Guid="04843E08-8CFA-4EBE-B335-F378177E860F">
                 <File Id="cygstdc___6.dll_1" KeyPath="yes" Source="$(var.ResDir)\lib\squid\cygstdc++-6.dll" />
             </Component>
             <Component Id="cygwin1.dll_1" Directory="squid_1" Guid="17C03500-2E6C-4175-ADC3-46333B2CBCDD">
@@ -252,29 +228,8 @@
             <Component Id="digest_ldap_auth.exe" Directory="squid_1" Guid="C05E9ADE-AA4D-4AEF-9452-F63E5955E3BF">
                 <File Id="digest_ldap_auth.exe" KeyPath="yes" Source="$(var.ResDir)\lib\squid\digest_ldap_auth.exe" />
             </Component>
-            <Component Id="ext_edirectory_userip_acl.exe" Directory="squid_1" Guid="1AD6478C-8DC1-49B9-941D-DE5B2B53D440">
-                <File Id="ext_edirectory_userip_acl.exe" KeyPath="yes" Source="$(var.ResDir)\lib\squid\ext_edirectory_userip_acl.exe" />
-            </Component>
-            <Component Id="ext_file_userip_acl.exe" Directory="squid_1" Guid="27274A78-2A71-41C2-AC97-956FB0055553">
-                <File Id="ext_file_userip_acl.exe" KeyPath="yes" Source="$(var.ResDir)\lib\squid\ext_file_userip_acl.exe" />
-            </Component>
-            <Component Id="ext_kerberos_ldap_group_acl.exe" Directory="squid_1" Guid="91C0DD2F-1FB1-4A2F-81BA-7356DE819CC2">
-                <File Id="ext_kerberos_ldap_group_acl.exe" KeyPath="yes" Source="$(var.ResDir)\lib\squid\ext_kerberos_ldap_group_acl.exe" />
-            </Component>
             <Component Id="ext_ldap_group_acl.exe" Directory="squid_1" Guid="3415860D-82EE-4F4D-A9A0-0F9250BCAC3A">
                 <File Id="ext_ldap_group_acl.exe" KeyPath="yes" Source="$(var.ResDir)\lib\squid\ext_ldap_group_acl.exe" />
-            </Component>
-            <Component Id="ext_session_acl.exe" Directory="squid_1" Guid="DD41CAF2-2B5D-444D-83D7-1CCC7101CC6E">
-                <File Id="ext_session_acl.exe" KeyPath="yes" Source="$(var.ResDir)\lib\squid\ext_session_acl.exe" />
-            </Component>
-            <Component Id="ext_sql_session_acl" Directory="squid_1" Guid="6D4DF631-7234-4AC6-80BB-D2AE4E14A392">
-                <File Id="ext_sql_session_acl" KeyPath="yes" Source="$(var.ResDir)\lib\squid\ext_sql_session_acl" />
-            </Component>
-            <Component Id="ext_time_quota_acl.exe" Directory="squid_1" Guid="E9C35F12-899E-4547-8A8F-05C21D9ECA52">
-                <File Id="ext_time_quota_acl.exe" KeyPath="yes" Source="$(var.ResDir)\lib\squid\ext_time_quota_acl.exe" />
-            </Component>
-            <Component Id="ext_unix_group_acl.exe" Directory="squid_1" Guid="99AB048D-8D29-442C-8DD2-B70F8AB2A70E">
-                <File Id="ext_unix_group_acl.exe" KeyPath="yes" Source="$(var.ResDir)\lib\squid\ext_unix_group_acl.exe" />
             </Component>
             <Component Id="ext_wbinfo_group_acl" Directory="squid_1" Guid="5E76ABEF-22C4-455A-980B-ECDEFE637A68">
                 <File Id="ext_wbinfo_group_acl" KeyPath="yes" Source="$(var.ResDir)\lib\squid\ext_wbinfo_group_acl" />
@@ -293,9 +248,6 @@
             </Component>
             <Component Id="negotiate_kerberos_auth_test.exe" Directory="squid_1" Guid="C12BC729-FB90-4AE5-BB99-D91D3C191C39">
                 <File Id="negotiate_kerberos_auth_test.exe" KeyPath="yes" Source="$(var.ResDir)\lib\squid\negotiate_kerberos_auth_test.exe" />
-            </Component>
-            <Component Id="negotiate_wrapper_auth.exe" Directory="squid_1" Guid="1318BB12-04D1-4F2C-A14C-26373AA2F166">
-                <File Id="negotiate_wrapper_auth.exe" KeyPath="yes" Source="$(var.ResDir)\lib\squid\negotiate_wrapper_auth.exe" />
             </Component>
             <Component Id="ntlm_fake_auth.exe" Directory="squid_1" Guid="911871DF-C2BC-45DF-930E-5A0301419256">
                 <File Id="ntlm_fake_auth.exe" KeyPath="yes" Source="$(var.ResDir)\lib\squid\ntlm_fake_auth.exe" />
