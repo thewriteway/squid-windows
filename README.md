@@ -13,7 +13,7 @@ Squid Windows Installer
 **Installation instructions**
 -----------------------------
 * [Download updated forked Squid 7.1 for Windows MSI installer] in the releases page https://github.com/thewriteway/squid-windows/releases/tag/v7.1
-* Run it and click "Next" button till the product is installed
+* Run it and click "Next" button till squid is installed as a service, than configure your browser proxy to point to localhost port 3128
 
 **Help**
 --------
@@ -22,4 +22,5 @@ Squid documentation can be found at http://www.squid-cache.org. Specific Squid q
 **Credits**
 -----------
 The Squid Team and diladele.
+
 
