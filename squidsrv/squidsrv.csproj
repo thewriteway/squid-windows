@@ -62,6 +62,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="System.ServiceProcess.ServiceController" Version="9.0.8" />
+    <PackageReference Include="System.ServiceProcess.ServiceController" Version="9.0.9" />
   </ItemGroup>
 </Project>
