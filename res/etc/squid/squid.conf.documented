@@ -1,4 +1,4 @@
-#	WELCOME TO SQUID 7.1
+#	WELCOME TO SQUID 7.3
 #	----------------------------
 #
 #	This is the documentation for the Squid configuration file.
@@ -5426,6 +5426,12 @@ coredump_dir /var/cache/squid
 #		Location headers and embedded URLs after the helper rewrites
 #		the request URL.
 #
+#		If Squid cannot parse the URL value returned by the helper, it logs a
+#		critical cache.log ERROR message and uses the original request URL.
+#		Supported URL format depends on the request method. For example,
+#		CONNECT request URLs must use `host:port` form, while GET URLs start
+#		with a `scheme:` prefix (e.g., `https://example.com/`).
+#
 #	  OK
 #		Keep the client request intact.
 #
@@ -7746,8 +7752,14 @@ refresh_pattern .		0	20%	4320
 #	included in the mailto links of the ERR pages (if %W is set)
 #	so that the email body contains the data.
 #	Syntax is <A HREF="mailto:%w%W">%w</A>
+#
+#	SECURITY WARNING:
+#		Request headers and other included facts may contain
+#		sensitive information about transaction history, the
+#		Squid instance, and its environment which would be
+#		unavailable to error recipients otherwise.
 #Default:
-# email_err_data on
+# email_err_data off
 
 #  TAG: deny_info
 #	Usage:   deny_info err_page_name acl
