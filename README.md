@@ -2,7 +2,7 @@
 
 It provides a MSI Windows Installer for Squid Proxy Server. 
 
-Current build is based on the latest **Squid 7.1** build for Cygwin Windows 64 bit.
+Current build is based on the latest **Squid 7.3** build for Cygwin Windows 64 bit.
 
 
 Squid Windows Installer
@@ -12,7 +12,7 @@ Squid Windows Installer
 
 **Installation instructions**
 -----------------------------
-* [Download updated forked Squid 7.1 for Windows MSI installer] in the releases page https://github.com/thewriteway/squid-windows/releases/tag/v7.1
+* [Download updated forked Squid 7.3 for Windows MSI installer] in the releases page https://github.com/thewriteway/squid-windows/releases/tag/v7.3
 * Run it and click "Next" button till squid is installed as a service, than configure your browser proxy to point to localhost port 3128
 
 **Help**
@@ -22,5 +22,6 @@ Squid documentation can be found at http://www.squid-cache.org. Specific Squid q
 **Credits**
 -----------
 The Squid Team and diladele.
+
 
 
