@@ -1,16 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
   <Fragment>
     <ComponentGroup Id="SquidRegistry">
       <Component Id="installdir_06E68B465DB044CB9906578604733C19" Directory="INSTALLFOLDER" Guid="06E68B46-5DB0-44CB-9906-578604733C19">
-        <RegistryValue Id="installdir_main_06E68B465DB044CB9906578604733C19"
-                       KeyPath="yes"
-                       Action="write"
-                       Root="HKLM"
-                       Key="Software\Squid"
-                       Name="InstallDir"
-                       Value="[INSTALLFOLDER]"
-                       Type="string"/>
+        <RegistryValue Id="installdir_main_06E68B465DB044CB9906578604733C19" KeyPath="yes" Action="write" Root="HKLM" Key="Software\Squid" Name="InstallDir" Value="[INSTALLFOLDER]" Type="string" />
       </Component>
     </ComponentGroup>
   </Fragment>

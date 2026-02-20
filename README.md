@@ -1,8 +1,8 @@
-**This is an updated forked version of diladele's installer.** 
+**This is an updated forked version of diladele's installer.**
 
-It provides a MSI Windows Installer for Squid Proxy Server. 
+It provides a MSI Windows Installer for Squid Proxy Server.
 
-Current build is based on the latest **Squid 7.3** build for Cygwin Windows 64 bit.
+Current build is based on the latest **Squid 7.4** build for Cygwin Windows 64 bit.
 
 
 Squid Windows Installer
@@ -12,8 +12,11 @@ Squid Windows Installer
 
 **Installation instructions**
 -----------------------------
-* [Download updated forked Squid 7.3 for Windows MSI installer] in the releases page https://github.com/thewriteway/squid-windows/releases/tag/v7.3
+* [Download updated forked Squid 7.4 for Windows MSI installer] in the releases page https://github.com/thewriteway/squid-windows/releases/tag/v7.4
 * Run it and click "Next" button till squid is installed as a service, than configure your browser proxy to point to localhost port 3128
+
+**Note of Caution**
+Squid proxy when hosted locally on a windows machine is not compatible with ad-blocker extension: ublock Origins's "Block Outsider Intrusion into LAN" filter, it must be turned off for the proxy to render website content correctly.
 
 **Help**
 --------

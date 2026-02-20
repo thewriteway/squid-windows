@@ -164,9 +164,13 @@ namespace Diladele.Squid.Tray
 
         private void OnOpenSquidFolder(object sender, EventArgs e)
         {
-            if (PredefinedPaths.InstallationFolder != string.Empty)
+            if (!string.IsNullOrEmpty(PredefinedPaths.InstallationFolder))
             {
-                Process.Start(PredefinedPaths.InstallationFolder);
+                Process.Start(new ProcessStartInfo
+                {
+                    FileName = PredefinedPaths.InstallationFolder,
+                    UseShellExecute = true
+                });
             }
         }
 

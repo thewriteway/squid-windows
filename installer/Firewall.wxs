@@ -1,10 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
-     xmlns:fire="http://schemas.microsoft.com/wix/FirewallExtension">
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:fire="http://wixtoolset.org/schemas/v4/wxs/firewall">
 	<Fragment>
     <ComponentGroup Id="SquidFirewall">
     <Component Id="Firewall3128Rule" Directory="bin" Guid="60466190-C03B-4972-93B9-95811EDEB4C7" KeyPath="yes">
-        <fire:FirewallException Scope="localSubnet" Program="[#squid.exe]" Id="A11935B644744576BFFFBD7A1E436F3D" Description="Opens 3128 port to allow the local subnet communicating with Squid Cache Server." Name="Squid Cache Server" Port="3128" Protocol="tcp" Profile="all" IgnoreFailure="yes"/>
+        <fire:FirewallException Scope="localSubnet" Program="[#squid.exe]" Id="A11935B644744576BFFFBD7A1E436F3D" Description="Opens 3128 port to allow the local subnet communicating with Squid Cache Server." Name="Squid Cache Server" Port="3128" Protocol="tcp" Profile="all" IgnoreFailure="yes" />
     </Component>
     </ComponentGroup>
 	</Fragment>
