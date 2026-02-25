@@ -1,0 +1,74 @@
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Fragment>
+    <ComponentGroup Id="SquidNET">
+ <Component Id="cmp4" Directory="bin" Guid="*">
+        <File Id="fil4" KeyPath="yes" Source="$(var.DiladeleDir)\diladele\Diladele.Squid.Service.deps.json" />
+      </Component>
+
+      <Component Id="cmp5" Directory="bin" Guid="*">
+        <File Id="fil5" KeyPath="yes" Source="$(var.DiladeleDir)\diladele\Diladele.Squid.Service.dll" />
+      </Component>
+
+      <Component Id="cmp6" Directory="bin" Guid="*">
+        <File Id="fil6" KeyPath="yes" Source="$(var.DiladeleDir)\diladele\Diladele.Squid.Service.dll.config" />
+      </Component>
+
+      <Component Id="cmp7" Directory="bin" Guid="*">
+        <File Id="fil7" KeyPath="yes" Source="$(var.DiladeleDir)\diladele\Diladele.Squid.Service.runtimeconfig.json" />
+      </Component>
+
+      <Component Id="cmp8" Directory="bin" Guid="*">
+        <File Id="fil8" KeyPath="yes" Source="$(var.DiladeleDir)\diladele\Diladele.Squid.Tray.deps.json" />
+      </Component>
+
+      <Component Id="cmp9" Directory="bin" Guid="*">
+        <File Id="fil9" KeyPath="yes" Source="$(var.DiladeleDir)\diladele\Diladele.Squid.Tray.dll" />
+      </Component>
+
+      <Component Id="cmp10" Directory="bin" Guid="*">
+        <File Id="fil10" KeyPath="yes" Source="$(var.DiladeleDir)\diladele\Diladele.Squid.Tray.dll.config" />
+      </Component>
+
+      <Component Id="cmp11" Directory="bin" Guid="*">
+        <File Id="fil11" KeyPath="yes" Source="$(var.DiladeleDir)\diladele\Diladele.Squid.Tray.runtimeconfig.json" />
+      </Component>
+
+      <Component Id="cmp12" Directory="bin" Guid="*">
+        <File Id="fil12" KeyPath="yes" Source="$(var.DiladeleDir)\diladele\Microsoft.Windows.SDK.NET.dll" />
+      </Component>
+
+      <Component Id="cmp13" Directory="bin" Guid="*">
+        <File Id="fil13" KeyPath="yes" Source="$(var.DiladeleDir)\diladele\System.Collections.Immutable.dll" />
+      </Component>
+
+      <Component Id="cmp14" Directory="bin" Guid="*">
+        <File Id="fil14" KeyPath="yes" Source="$(var.DiladeleDir)\diladele\System.Diagnostics.EventLog.dll" />
+      </Component>
+
+      <Component Id="cmp15" Directory="bin" Guid="*">
+        <File Id="fil15" KeyPath="yes" Source="$(var.DiladeleDir)\diladele\System.Diagnostics.EventLog.Messages.dll" />
+      </Component>
+
+      <Component Id="cmp16" Directory="bin" Guid="*">
+        <File Id="fil16" KeyPath="yes" Source="$(var.DiladeleDir)\diladele\System.Formats.Nrbf.dll" />
+      </Component>
+
+      <Component Id="cmp17" Directory="bin" Guid="*">
+        <File Id="fil17" KeyPath="yes" Source="$(var.DiladeleDir)\diladele\System.Reflection.Metadata.dll" />
+      </Component>
+
+      <Component Id="cmp18" Directory="bin" Guid="*">
+        <File Id="fil18" KeyPath="yes" Source="$(var.DiladeleDir)\diladele\System.Resources.Extensions.dll" />
+      </Component>
+
+      <Component Id="cmp19" Directory="bin" Guid="*">
+        <File Id="fil19" KeyPath="yes" Source="$(var.DiladeleDir)\diladele\System.ServiceProcess.ServiceController.dll" />
+      </Component>
+
+      <Component Id="cmp20" Directory="bin" Guid="*">
+        <File Id="fil20" KeyPath="yes" Source="$(var.DiladeleDir)\diladele\WinRT.Runtime.dll" />
+      </Component>
+
+    </ComponentGroup>
+  </Fragment>
+</Wix>

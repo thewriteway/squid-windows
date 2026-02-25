@@ -68,6 +68,7 @@
 
     <Feature Id="SquidFeature" Title="Squid" Description="Installs Squid server." Level="1">
       <ComponentGroupRef Id="SquidFilesGroup" />
+	  <ComponentGroupRef Id="SquidNET" />
       <ComponentGroupRef Id="SquidRegistry" />
       <ComponentGroupRef Id="SquidService" />
       <ComponentGroupRef Id="SquidTray" />

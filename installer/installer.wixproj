@@ -1,6 +1,6 @@
 <Project Sdk="WixToolset.Sdk/6.0.2">
   <PropertyGroup>
-    <ProductVersion>3.9</ProductVersion>
+    <ProductVersion>7.4</ProductVersion>
     <OutputName>squid_v7.4</OutputName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
