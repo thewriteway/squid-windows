@@ -11,9 +11,11 @@ using System.Linq;
 using System.ServiceProcess;
 using System.Windows.Forms;
 using Microsoft.Win32;
+using System.Runtime.Versioning;
 
 namespace Diladele.Squid.Tray
 {
+    [SupportedOSPlatform("windows")]
     internal sealed class ServiceManager : IDisposable
     {
         private ServiceController controller;
@@ -45,13 +47,19 @@ namespace Diladele.Squid.Tray
                 controller.Stop();
                 controller.WaitForStatus(ServiceControllerStatus.Stopped, TimeSpan.FromSeconds(20));
             }
-            catch (Win32Exception ex) when (ex.NativeErrorCode == 5) // Access denied
+            catch (InvalidOperationException ex) when (IsAccessDenied(ex))
             {
+                // Not elevated -> prompt UAC and stop via net.exe
                 ElevateAndRun("stop");
             }
             catch (InvalidOperationException ex)
             {
                 HandleException(ex);
+            }
+            catch (Win32Exception ex) when (ex.NativeErrorCode == 5)
+            {
+                // Access denied
+                ElevateAndRun("stop");
             }
             catch (Exception ex)
             {
@@ -80,8 +88,14 @@ namespace Diladele.Squid.Tray
                 controller.Start();
                 controller.WaitForStatus(ServiceControllerStatus.Running, TimeSpan.FromSeconds(20));
             }
-            catch (Win32Exception ex) when (ex.NativeErrorCode == 5) // Access denied
+            catch (InvalidOperationException ex) when (IsAccessDenied(ex))
             {
+                // Not elevated -> prompt UAC and start via net.exe
+                ElevateAndRun("start");
+            }
+            catch (Win32Exception ex) when (ex.NativeErrorCode == 5)
+            {
+                // Access denied
                 ElevateAndRun("start");
             }
             catch (Exception ex)
@@ -90,15 +104,22 @@ namespace Diladele.Squid.Tray
             }
         }
 
+        private static bool IsAccessDenied(InvalidOperationException ex)
+        {
+            // ServiceController often wraps Win32 errors inside InvalidOperationException.InnerException
+            return ex.InnerException is Win32Exception win32 && win32.NativeErrorCode == 5;
+        }
+
         private void ElevateAndRun(string action)
         {
             try
             {
+                // Use net.exe directly (no cmd.exe) and ensure ShellExecute for runas/UAC.
                 var psi = new ProcessStartInfo
                 {
-                    FileName = "cmd.exe",
-                    Arguments = $"/c net {action} {ServiceName}",
-                    Verb = "runas", // triggers UAC
+                    FileName = "net.exe",
+                    Arguments = $"{action} {ServiceName}",
+                    Verb = "runas",             // triggers UAC
                     UseShellExecute = true,
                     WindowStyle = ProcessWindowStyle.Hidden
                 };
@@ -112,6 +133,9 @@ namespace Diladele.Squid.Tray
                         ShowError($"Failed to {action} service. Exit code: {p.ExitCode}");
                     }
                 }
+
+                // After elevation attempt, refresh controller state
+                controller.Refresh();
             }
             catch (Win32Exception ex)
             {
@@ -169,14 +193,22 @@ namespace Diladele.Squid.Tray
 
         private void HandleException(InvalidOperationException ex)
         {
-            if (ex.InnerException is Win32Exception win32 && win32.NativeErrorCode == 2)
+            if (ex.InnerException is Win32Exception win32)
             {
-                ShowError("Service not found.");
+                if (win32.NativeErrorCode == 2)
+                {
+                    ShowError("Service not found.");
+                    return;
+                }
+                if (win32.NativeErrorCode == 5)
+                {
+                    // Access denied -> elevate
+                    ElevateAndRun("stop");
+                    return;
+                }
             }
-            else
-            {
-                ShowError(ex.Message);
-            }
+
+            ShowError(ex.Message);
         }
 
         private void ShowError(string message)
