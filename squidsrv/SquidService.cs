@@ -7,8 +7,6 @@
 using System;
 using System.Diagnostics;
 using System.Globalization;
-using System.IO;
-using System.Net;
 using System.ServiceProcess;
 using Diladele.Squid.Tray;
 
@@ -18,7 +16,6 @@ namespace Diladele.Squid.Service
     {
         private Process squid;
         private System.Threading.Timer timer;
-        private System.Threading.Timer updateTimer;
         private readonly object locker;
 
         public SquidService()
@@ -52,7 +49,6 @@ namespace Diladele.Squid.Service
                 StartSquidProcess();
 
                 this.timer = new System.Threading.Timer(this.OnTimer, null, TimeSpan.Zero, TimeSpan.FromSeconds(20));
-                this.updateTimer = new System.Threading.Timer(this.OnUpdateTimer, null, TimeSpan.Zero, TimeSpan.FromHours(6));
             }
             catch (Exception e)
             {
@@ -67,28 +63,39 @@ namespace Diladele.Squid.Service
             {
                 this.eventLog.WriteEntry("Squid is stopping...", EventLogEntryType.Information);
 
-                if (timer != null)
-                {
-                    timer.Dispose();
-                    timer = null;
-                }
-
-                if (updateTimer != null)
-                {
-                    updateTimer.Dispose();
-                    updateTimer = null;
-                }
+                timer?.Dispose();
+                timer = null;
 
                 lock (this.locker)
                 {
-                    this.Kill(this.squid);
-                    this.squid = null;
-                }
+                    // Step 1: graceful shutdown
+                    StopSquidGracefully();
 
-                var processes = Process.GetProcessesByName("squid");
-                foreach (var p in processes)
-                {
-                    this.Kill(p);
+                    // Step 2: wait and force kill if needed
+                    var processes = Process.GetProcessesByName("squid");
+
+                    foreach (var p in processes)
+                    {
+                        try
+                        {
+                            if (!p.WaitForExit(5000))
+                            {
+                                this.eventLog.WriteEntry(
+                                    $"Force killing squid process '{p.Id}'.",
+                                    EventLogEntryType.Warning);
+
+                                p.Kill();
+                            }
+                        }
+                        catch
+                        {
+                            this.eventLog.WriteEntry(
+                                $"Could not terminate squid process '{p.Id}'.",
+                                EventLogEntryType.Warning);
+                        }
+                    }
+
+                    this.squid = null;
                 }
 
                 this.eventLog.WriteEntry("Squid stopped.", EventLogEntryType.Information);
@@ -122,34 +129,6 @@ namespace Diladele.Squid.Service
             }
         }
 
-        private void OnUpdateTimer(object state)
-        {
-            lock (this.updateTimer)
-            {
-                try
-                {
-                    var remoteVersionFile = PredefinedPaths.InstallationFolder + @"\var\log\squid.version";
-
-                    var req = (HttpWebRequest)WebRequest.Create("https://defs.diladele.com/squid/version/windows");
-                    req.UserAgent = "Squid4.14/" + Environment.OSVersion.VersionString + "/x64 (win;0-0-0-0)";
-                    req.Headers.Add("Authorization", "Token 0000000000000000");
-
-                    WebResponse resp = req.GetResponse();
-                    StreamReader sr = new StreamReader(resp.GetResponseStream());
-                    var result = sr.ReadToEnd().Trim();
-
-                    using (StreamWriter file = new StreamWriter(remoteVersionFile))
-                    {
-                        file.WriteLine(result);
-                    }
-                }
-                catch (Exception e)
-                {
-                    eventLog.WriteEntry(e.Message, EventLogEntryType.Error);
-                }
-            }
-        }
-
         private void StartSquidProcess()
         {
             lock (this.locker)
@@ -157,6 +136,8 @@ namespace Diladele.Squid.Service
                 this.squid = new Process();
                 this.squid.StartInfo.FileName = PredefinedPaths.InstallationFolder + @"\bin\squid.exe";
                 this.squid.StartInfo.CreateNoWindow = true;
+                this.squid.StartInfo.UseShellExecute = false;
+                this.squid.StartInfo.WorkingDirectory = PredefinedPaths.InstallationFolder + @"\bin";
                 this.squid.StartInfo.Arguments = "-N";
 
                 this.squid.Start();
@@ -169,24 +150,24 @@ namespace Diladele.Squid.Service
             }
         }
 
-        private void Kill(Process p)
+        private void StopSquidGracefully()
         {
             try
             {
-                if (!p.HasExited)
-                {
-                    p.Kill();
-                }
-            }
-            catch (Exception)
-            {
-                this.eventLog.WriteEntry(
-                    string.Format(
-                        CultureInfo.InvariantCulture,
-                        "Could not terminate squid process '{0}'.",
-                        p.Id),
+                var shutdown = new Process();
+                shutdown.StartInfo.FileName = PredefinedPaths.InstallationFolder + @"\bin\squid.exe";
+                shutdown.StartInfo.Arguments = "-k shutdown";
+                shutdown.StartInfo.CreateNoWindow = true;
+                shutdown.StartInfo.UseShellExecute = false;
+                shutdown.StartInfo.WorkingDirectory = PredefinedPaths.InstallationFolder + @"\bin";
 
-                    EventLogEntryType.Warning);
+                shutdown.Start();
+
+                this.eventLog.WriteEntry("Sent graceful shutdown signal to squid.", EventLogEntryType.Information);
+            }
+            catch (Exception e)
+            {
+                this.eventLog.WriteEntry("Graceful shutdown failed: " + e.Message, EventLogEntryType.Warning);
             }
         }
     }
