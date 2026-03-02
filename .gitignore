@@ -1,5 +1,6 @@
 .vs/
 certificates/
+bin/
 *.pfx
 */obj/
 installer/bin/
