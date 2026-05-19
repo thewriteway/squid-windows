@@ -6,8 +6,6 @@
   "assignees": ["thewriteway"],
   "separateMinorPatch": true,
   "separateMajorMinor": true,
-  "separateMultipleMajor": true,
-  "separateMultipleMinor": true,
    "packageRules": [
     {
       "datasources": ["cpan"],
