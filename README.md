@@ -1,9 +1,8 @@
-![Release](https://img.shields.io/github/v/release/thewriteway/squid-windows)
-![Downloads](https://img.shields.io/github/downloads/thewriteway/squid-windows/total)
-![License](https://img.shields.io/github/license/thewriteway/squid-windows)
-![Dependabot](https://img.shields.io/badge/dependabot-enabled-brightgreen)
-![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen?logo=renovatebot)
-![Stars](https://img.shields.io/github/stars/thewriteway/squid-windows)
+![Release](https://shieldcn.dev/github/release/thewriteway/squid-windows)
+![Downloads](https://shieldcn.dev/github/downloads/thewriteway/squid-windows.svg)
+![Stars](https://shieldcn.dev/github/stars/thewriteway/squid-windows)
+![Forks](https://shieldcn.dev/github/forks/thewriteway/squid-windows)
+![Commits](https://shieldcn.dev/github/commits/thewriteway/squid-windows)
 
 **This is an updated forked version of diladele's installer.**
 
