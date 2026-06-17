@@ -30,6 +30,6 @@
     <Content Include="Resources\SquidIcon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="System.ServiceProcess.ServiceController" Version="10.0.8" />
+    <PackageReference Include="System.ServiceProcess.ServiceController" Version="10.0.9" />
   </ItemGroup>
 </Project>
