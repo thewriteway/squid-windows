@@ -1,6 +1,6 @@
 ﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:util="http://wixtoolset.org/schemas/v4/wxs/util" xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
 
-  <Package Name="Squid" Language="1033" Version="7.6" Manufacturer="Squid Project" UpgradeCode="103139C5-4C94-471D-94D6-D838BB7E6CB9" InstallerVersion="200" ProductCode="01D9D1A2-D311-4932-9856-438608315C61">
+  <Package Name="Squid" Language="1033" Version="7.6" Manufacturer="Squid Project" UpgradeCode="103139C5-4C94-471D-94D6-D838BB7E6CB9" InstallerVersion="200" ProductCode="*">
     <SummaryInformation Description="Installer for Squid from Diladele B.V." />
 
     <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
