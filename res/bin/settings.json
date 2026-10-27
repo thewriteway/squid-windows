@@ -1,6 +1,6 @@
 {
     "settings" : {
-        "version"  : "7.6.0",
+        "version"  : "7.7.0",
         "platform" : "amd64",
         "os"       : "windows"
     }
